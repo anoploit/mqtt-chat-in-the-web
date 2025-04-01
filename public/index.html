@@ -10,13 +10,27 @@
   </head>
   <body>
     <h1>MQTT Web Chat</h1>
-    <p style="font-size: 25px">You are <b id="clientid"></b></p>
 
-    <div id="chat"></div>
+    <div id="loginForm">
+      <h2>Login</h2>
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="Username" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Password" required />
+      <button onclick="login()">Login</button>
+    </div>
+    <div id="error-message" style="color: red; display: none">
+      <strong>Error:</strong> username or password is false.
+    </div>
 
-    <input type="text" id="message" placeholder="Type something..." />
-    <button class="buttonleft" onclick="sendMessage()">Send</button>
-    <button class="buttonright" onclick="disconnect()">Disconnect</button>
+    <div id="chatContainer" style="display: none">
+      <p style="font-size: 25px">You are <b id="clientid"></b></p>
+      <div id="chat"></div>
+      <input type="text" id="message" placeholder="Type something..." />
+      <button class="buttonleft" onclick="sendMessage()">Send</button>
+      <button class="buttonright" onclick="disconnect()">Disconnect</button>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

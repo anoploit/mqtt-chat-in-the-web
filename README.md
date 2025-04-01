@@ -24,7 +24,7 @@ This project implements a simple chat application using WebSockets and MQTT, whe
 4. **Generate SSL certificates** for secure communication (optional because they're already generated).
    
    ```bash
-   openssl req -x509 -newkey rsa:2048 -keyout mosquitto.key -out mosquitto.crt -days 365
+   openssl req -x509 -newkey rsa:2048 -keyout mosquitto.key -out mosquitto.crt -days 365 -nodes
    ``` 
 
 5. **Make sure you have your certificates** (`server.crt` and `server.key`) located in the `mosquitto/keys/` directory of the project. You can manually copy them inside the repo.
@@ -42,8 +42,22 @@ This project implements a simple chat application using WebSockets and MQTT, whe
      1. Go to the Firefox settings and search for `certificates`.
      2. Click on "View Certificates" and import the `server.crt` file.
      3. Mark the certificate as trusted.
+   
+7. **Install mosquitto broker**:
+   
+    ```http://www.steves-internet-guide.com/install-mosquitto-broker/```
 
-7. **Start the application** using Docker Compose:
+- Run the CMD as administrator and navigate to mosquitto
+- Copy paste the following comando and change the username to your liking
+   ```
+   mosquitto_passwd -c user.txt username
+   ``` 
+- Locate the user.txt file and change `password.txt` with that content
+
+- For reference, open this link:
+   ```http://www.steves-internet-guide.com/mqtt-username-password-example/```
+
+1. **Start the application** using Docker Compose:
 
    ```bash
    docker-compose up
@@ -51,7 +65,7 @@ This project implements a simple chat application using WebSockets and MQTT, whe
 
    This will start both the **web server (NGINX)** and **MQTT broker (Mosquitto)** in separate containers.
 
-8. Open your browser and navigate to either urls below. You should see the chat interface.
+2.  Open your browser and navigate to either urls below. You should see the chat interface.
    - `localhost:80` -> **http** redirect to **https**
    - `localhost:443` -> **https port** (immediate connection)
 
