@@ -82,7 +82,7 @@ function login() {
     textContent.append(messageJson.text); // Append the message text
 
     // Add classes for styling based on the user
-    if (messageJson.user == username) {
+    if (messageJson.user == clientCred) {
       textContent.classList.add("messageright"); // Style the message for the current user
     } else {
       textContent.classList.add("messageleft"); // Style the message for other users
